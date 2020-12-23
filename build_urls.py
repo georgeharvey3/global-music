@@ -22,7 +22,6 @@ def get_urls(nts):
     Returns:
         urls (list): List of URLs that contain details about an album.
     """
-    urls = []
     
     for nt in nts:
                         
@@ -32,11 +31,10 @@ def get_urls(nts):
                       num=3, start=0, stop=3, pause=2.0))
         for page in pages:
             if 'smithsonian' in page and 'album' in page:
-                urls.append(page)
+                yield page
                 break
         else:
             print('No page found for:', nt.album)
-    return urls
 
 
         
