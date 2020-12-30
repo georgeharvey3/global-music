@@ -29,6 +29,7 @@ def insert_data(data):
             for cell, value in zip(cell_list, data.values()):
                 cell.value = value
             sheet.update_cells(cell_list)
-    except:
+    except Exception as e:
+        print(e)
         print("Problem inserting data for:", data)
 

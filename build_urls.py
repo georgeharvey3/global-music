@@ -27,8 +27,9 @@ def get_urls(nts):
                         
         query = nt.album + ' smithsonian'
         
-        pages = list(search(query, tld='com', lang='en', 
-                      num=3, start=0, stop=3, pause=2.0))
+        #pages = list(search(query, tld='com', lang='en', 
+        #              num=3, start=0, stop=3, pause=2.0))
+        pages = list(search(query, num_results=3, lang='en'))
         for page in pages:
             if 'smithsonian' in page and 'album' in page:
                 yield page

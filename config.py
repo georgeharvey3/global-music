@@ -21,5 +21,5 @@ USERNAME = 'effilyg'  # your spotify username
 CLIENT_ID = '8f4eb11b9f704a1c8dca356698b067f3'  # set at your developer account
 CLIENT_SECRET = 'ad896f7b86084d2abab43243d39fcbe5'  # set at your developer account
 REDIRECT_URI = 'http://google.com/'
-PLAYLIST_NAME = get_playlist_name()
+PLAYLIST_NAME = 'Central Asia' #get_playlist_name()
 SCOPE = 'playlist-read-private'

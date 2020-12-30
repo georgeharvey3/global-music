@@ -1,6 +1,9 @@
-from bs4 import BeautifulSoup
 import requests
-from collections import defaultdict
+from random_location import random_point_in_country
+from bs4 import BeautifulSoup
+
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 headers = {
@@ -57,6 +60,15 @@ def get_data(pages):
             d['liner'] = liner[0]['href']
         except IndexError:
             d['liner'] = 'None'
+            
+        country = d.get('Country(s)')
+        
+        location = 'None'
+        
+        if country:
+            country = country.split(";")[0]
+            country = country.split(" ")[0]
+            location = random_point_in_country("World_Countries.shp", country)
         
         
         return_d = {'ethnic_groups': (d.get('Country(s)', 'None') + ' - ' + d.get('Culture Group(s)') 
@@ -66,7 +78,7 @@ def get_data(pages):
                     'languages': d.get('Language(s)', 'None'),
                     'instruments': d.get('Instrument(s)', 'None'),
                     'liner': d['liner'],
-                    'location': d.get('Recording Locations(s)', 'None')}
+                    'location': location}
  
         yield return_d
 
